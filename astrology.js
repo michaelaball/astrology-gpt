@@ -1,12 +1,12 @@
-import { Planet, julian, planetposition } from 'astronomia';
-
-const earth = new planetposition.Planet(planetposition.earth);
+import ephemeris from 'ephemeris';
 
 export default {
   getPlanetaryAlignments: function() {
     const date = new Date();
-    const jd = julian.DateToJD(date);
-    const positions = Planet.getHeliocentricPosition(jd, earth);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1; // Months are zero-based in JS
+    const day = date.getDate();
+    const positions = ephemeris.getAllPlanets(year, month, day);
     console.log(positions);
   }
 };

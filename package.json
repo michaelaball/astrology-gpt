@@ -8,6 +8,6 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "astronomia": "^1.10.3"
+    "ephemeris": "^0.2.11"
   }
 }
