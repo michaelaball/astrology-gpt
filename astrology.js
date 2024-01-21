@@ -7,6 +7,17 @@ export default {
     // parameters: ephemeris.getAllPlanets(dateObj, longitude, latitude, height);
     var result = ephemeris.getAllPlanets(dateObj, 10.0014, 53.5653, 0);
     console.log(result)
+    },
+
+    getHouses: (dateObj, longitude, latitude) => {
+        const houses = ephemeris.getHouses(dateObj, longitude, latitude);
+        console.log(houses);
+    },
+
+    getPlanetInSign: (planet, dateObj) => {
+        const planetPosition = ephemeris[planet](dateObj);
+        const sign = ephemeris.getSign(planetPosition.longitude);
+        console.log(`${planet} is in ${sign}`);
     }
 }
  
