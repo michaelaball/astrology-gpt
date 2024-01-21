@@ -1,12 +1,12 @@
-import ephemeris from 'ephemeris';
+import ephemeris from "ephemeris";
 
 export default {
-  getPlanetaryAlignments: function() {
-    const date = new Date();
-    const year = date.getUTCFullYear();
-    const month = date.getUTCMonth() + 1; // Months are zero-based in JS
-    const day = date.getUTCDate();
-    const positions = ephemeris.getAllPlanets(year, month, day);
-    console.log(positions);
-  }
-};
+    getPlanetaryAlignments: ()=> {
+    const dateObj = new Date('2015-08-10T17:09:01.000+08:00');
+ 
+    // parameters: ephemeris.getAllPlanets(dateObj, longitude, latitude, height);
+    var result = ephemeris.getAllPlanets(dateObj, 10.0014, 53.5653, 0);
+    console.log(result)
+    }
+}
+ 
