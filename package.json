@@ -8,6 +8,6 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "astronomy": "^0.6.1"
+    "astronomia": "^1.10.3"
   }
 }
