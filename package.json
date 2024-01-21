@@ -1,0 +1,10 @@
+{
+  "name": "astrology-forecast",
+  "version": "1.0.0",
+  "description": "A Node.js program that uses ChatGPT to interpret the current astrological chart and make forecasts.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {}
+}
