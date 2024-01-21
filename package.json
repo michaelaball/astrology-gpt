@@ -8,6 +8,6 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "ephemeris": "^0.2.11"
+    "ephemeris": "^2.0.0"
   }
 }
