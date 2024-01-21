@@ -7,5 +7,7 @@
   "scripts": {
     "start": "node app.js"
   },
-  "dependencies": {}
+  "dependencies": {
+    "astronomy": "^0.6.1"
+  }
 }

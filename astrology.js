@@ -1,2 +1,9 @@
-// TODO: Implement interpretation of the current astrological chart and making forecasts
-export default {};
+import { calculatePositions } from 'astronomy';
+
+export default {
+  getPlanetaryAlignments: function() {
+    const date = new Date();
+    const positions = calculatePositions(date);
+    console.log(positions);
+  }
+};
