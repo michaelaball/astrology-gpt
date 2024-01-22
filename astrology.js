@@ -30,11 +30,13 @@ export default {
 
     getBirthChart: (dateObj) => {
         const allPlanets = ephemeris.getAllPlanets(dateObj);
+        let alignments = []
         for (let planet in allPlanets.observed) {
             const planetPosition = allPlanets.observed[planet];
             const sign = getSign(planetPosition.apparentLongitudeDd);
-            console.log(`${planet} is in ${sign}`);
+            alignments.push(`${planet} is in ${sign}`)
         }
+        return alignments.join('\n')
     }
 }
  

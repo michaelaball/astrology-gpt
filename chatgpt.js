@@ -13,7 +13,7 @@ const chatGptInterpret = async (input) => {
     const params = {
         messages: [{
             role: 'user',
-            content: 'please explain basic astrology to me'
+            content: input
         }],
         model: "gpt-4-1106-preview",
         temperature: 0,
