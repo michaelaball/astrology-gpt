@@ -26,6 +26,15 @@ export default {
         console.log('planetPosition', planetPosition);
         const sign = getSign(planetPosition.apparentLongitudeDd);
         console.log(`${planet} is in ${sign}`);
+    },
+
+    getBirthChart: (dateObj) => {
+        const allPlanets = ephemeris.getAllPlanets(dateObj);
+        for (let planet in allPlanets.observed) {
+            const planetPosition = allPlanets.observed[planet];
+            const sign = getSign(planetPosition.apparentLongitudeDd);
+            console.log(`${planet} is in ${sign}`);
+        }
     }
 }
  
