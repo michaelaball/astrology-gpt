@@ -4,16 +4,24 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const chatGptInterpret = async (input) => {
-    const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
-        prompt: input,
-        max_tokens: 60
-    }, {
+    const client = axios.create({
         headers: {
-            'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
-        }
+            Authorization: "Bearer " + process.env.OPENAI_AUTH,
+        },
     });
 
-    return response.data.choices[0].text.trim();
+    const params = {
+        messages: [{
+            role: 'user',
+            content: 'please explain basic astrology to me'
+        }],
+        model: "gpt-4-1106-preview",
+        temperature: 0,
+    };
+
+    const response = await client
+        .post("https://api.openai.com/v1/chat/completions", params)
+    return response.data.choices[0].message.content
 };
 
 export default {
