@@ -1,5 +1,11 @@
 import ephemeris from "ephemeris";
 
+const signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
+
+function getSign(longitude) {
+    return signs[Math.floor((longitude - 1) / 30)];
+}
+
 export default {
     getPlanetaryAlignments: ()=> {
     const dateObj = new Date('2015-08-10T17:09:01.000+08:00');
@@ -18,7 +24,7 @@ export default {
         const allPlanets = ephemeris.getAllPlanets(dateObj);
         const planetPosition = allPlanets.observed[planet];
         console.log('planetPosition', planetPosition);
-        const sign = ephemeris.getSign(planetPosition.apparentLongitudeDd);
+        const sign = getSign(planetPosition.apparentLongitudeDd);
         console.log(`${planet} is in ${sign}`);
     }
 }
