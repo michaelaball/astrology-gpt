@@ -18,7 +18,7 @@ export default {
         const allPlanets = ephemeris.getAllPlanets(dateObj);
         const planetPosition = allPlanets.observed[planet];
         console.log('planetPosition', planetPosition);
-        const sign = ephemeris.getSign(planetPosition.longitude);
+        const sign = ephemeris.getSign(planetPosition.apparentLongitudeDd);
         console.log(`${planet} is in ${sign}`);
     }
 }
