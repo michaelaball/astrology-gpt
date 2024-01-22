@@ -1,6 +1,8 @@
 import chatgpt from './chatgpt.js';
 import astrology from './astrology.js';
 
-astrology.getPlanetaryAlignments();
+// astrology.getPlanetaryAlignments();
 
-astrology.getPlanetInSign('sun', new Date('2015-08-10T17:09:01.000+08:00'));
+// astrology.getPlanetInSign('venus', new Date('1989-10-06T17:09:01.000+08:00'));
+
+astrology.getBirthChart(new Date('1989-10-06T17:09:01.000+08:00'));
