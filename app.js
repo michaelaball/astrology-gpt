@@ -1,6 +1,6 @@
 import fs from 'fs';
 import chatgpt from './chatgpt.js';
-import {getYearlyAlignments} from './astrology.js';
+import {getYearlyAlignmentAdvanced, getYearlyAlignments} from './astrology.js';
 
 // astrology.getPlanetaryAlignments();
 
@@ -19,5 +19,5 @@ import {getYearlyAlignments} from './astrology.js';
 // chatgpt.chatGptInterpret(prompt).then(response => console.log(response));
 
 
-const yearly = getYearlyAlignments()
+const yearly = getYearlyAlignmentAdvanced()
 console.log('yearly: ',yearly)
