@@ -52,25 +52,26 @@ function getSign(longitude) {
     export function getYearlyAlignmentAdvanced() {
         const basic = getYearlyAlignments()
         const advanced = basic.map(([dateId, alignment]) => {
-            // Fill this in.
-            /* alignment will look like this {
-                'sun': 'Capricorn',
-                'moon: 'Sagittarius',
-                ...etc
-              }
-            We would like to return an advanced alignment like this:
-            {
-                'sun': {
-                    current: 'Capricorn',
-                    until: '20241219',
-                    next: 'Aquarius'
-                },
-                ... etc
+            let advancedAlignment = {};
+            for (let planet in alignment) {
+                let currentSign = alignment[planet];
+                let nextChange = basic.find(([nextDateId, nextAlignment]) => nextAlignment[planet] !== currentSign);
+                if (nextChange) {
+                    advancedAlignment[planet] = {
+                        current: currentSign,
+                        until: nextChange[0],
+                        next: nextChange[1][planet]
+                    };
+                } else {
+                    advancedAlignment[planet] = {
+                        current: currentSign,
+                        until: null,
+                        next: null
+                    };
+                }
             }
-            So that current is the current sign for that date (as in the original alignment)
-            until will be the date that changes (if present in the rest of basic array)
-            next will be the name of the next sign for the date that it changes (from the basic array)
-            */
-        })
+            return [dateId, advancedAlignment];
+        });
+        return Object.fromEntries(advanced);
     }
  
