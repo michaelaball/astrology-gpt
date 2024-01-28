@@ -37,6 +37,17 @@ export default {
             alignments.push(`${planet} is in ${sign}`)
         }
         return alignments.join('\n')
+    },
+
+    getYearlyAlignments: () => {
+        let alignments = {};
+        let dateObj = new Date();
+        for (let i = 0; i < 365; i++) {
+            let dateStr = dateObj.toISOString().split('T')[0].replace(/-/g, '');
+            alignments[dateStr] = getBirthChart(dateObj);
+            dateObj.setDate(dateObj.getDate() + 1);
+        }
+        return alignments;
     }
 }
  
