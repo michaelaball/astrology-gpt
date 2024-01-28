@@ -51,11 +51,11 @@ function getSign(longitude) {
 
     export function getYearlyAlignmentAdvanced() {
         const basic = getYearlyAlignments()
-        const advanced = basic.map(([dateId, alignment]) => {
+        const advanced = basic.map(([dateId, alignment], index) => {
             let advancedAlignment = {};
             for (let planet in alignment) {
                 let currentSign = alignment[planet];
-                let nextChange = basic.find(([nextDateId, nextAlignment]) => nextAlignment[planet] !== currentSign);
+                let nextChange = basic.slice(index).find(([nextDateId, nextAlignment]) => nextAlignment[planet] !== currentSign);
                 if (nextChange) {
                     advancedAlignment[planet] = {
                         current: currentSign,
