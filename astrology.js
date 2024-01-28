@@ -6,27 +6,8 @@ function getSign(longitude) {
     return signs[Math.floor((longitude - 1) / 30)];
 }
 
-getYearlyAlignments: () => {
-    const alignments = {};
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-
-    for (let month = 0; month < 12; month++) {
-        for (let day = 1; day <= 31; day++) {
-            const date = new Date(currentYear, month, day);
-            if (date.getMonth() === month) {
-                const dateStamp = `${currentYear}${String(month + 1).padStart(2, '0')}${String(day).padStart(2, '0')}`;
-                alignments[dateStamp] = getBirthChart(date);
-            }
-        }
-    }
-
-    return alignments;
-},
-
 export default {
     getPlanetaryAlignments: ()=> {
-    getYearlyAlignments,
     const dateObj = new Date('1989-10-06T17:09:01.000+08:00');
  
     // parameters: ephemeris.getAllPlanets(dateObj, longitude, latitude, height);
