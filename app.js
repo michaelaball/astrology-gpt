@@ -1,6 +1,6 @@
 import fs from 'fs';
 import chatgpt from './chatgpt.js';
-import {getYearlyAlignmentAdvanced, getYearlyAlignments} from './astrology.js';
+import {createDateFromId, createDateIdFromDate, formatDateDayMonth, getBirthChart, getYearlyAlignmentAdvanced, getYearlyAlignments} from './astrology.js';
 
 // astrology.getPlanetaryAlignments();
 
@@ -20,4 +20,25 @@ import {getYearlyAlignmentAdvanced, getYearlyAlignments} from './astrology.js';
 
 
 const yearly = getYearlyAlignmentAdvanced()
-console.log('yearly: ',yearly)
+// const useDate = new Date()
+const useDate = createDateFromId('20240130')
+let alignments = []
+alignments.push(`Today is: ${formatDateDayMonth(useDate)}`)
+const today = yearly[createDateIdFromDate(useDate)]
+alignments = alignments.concat(Object.entries(today).map(([planet, alignment]) => {
+    if (!alignment.current) {
+        return ''
+    }
+    let start = `${planet} is in ${alignment.current}`
+    if (alignment.until && alignment.next) {
+        start += ` until ${formatDateDayMonth(createDateFromId(alignment.until))}, when it enters ${alignment.next} `
+    }
+    return start
+}))
+const stringChart = alignments.join('\n')
+console.log(stringChart)
+// console.log('yearly: ',yearly)
+
+const prompt = fs.readFileSync('forecast-prompt.txt', 'utf8').replace('\n', ' ') + `\n${stringChart}`;
+console.log('prompt: ',prompt);
+chatgpt.chatGptInterpret(prompt).then(response => console.log(response));
